@@ -22,7 +22,6 @@ class WebEngineQtExecutor : public IExecutor {
     Q_DECLARE_PRIVATE(WebEngineQtExecutor)
 
 public:
-
     WebEngineQtExecutor(QObject* parent = nullptr);
     ~WebEngineQtExecutor();
 
@@ -34,8 +33,6 @@ public:
     Q_INVOKABLE virtual void executeJSCall(const QString& method,
                                            const QVariantList& args = QVariantList(),
                                            const IExecutor::ExecuteCallback& callback = ExecuteCallback());
-
-    Q_INVOKABLE void registerJSObject(const QString &id, QObject *object) override;
 
     Q_INVOKABLE void initJSconstraints() override;
 

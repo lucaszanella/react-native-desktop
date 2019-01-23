@@ -55,9 +55,7 @@
 #include "utilities.h"
 #include "websocketmodule.h"
 
-#ifdef QTWEBENGINE_ENABLED
 #include "communication/webengineqtexecutor.h"
-#endif
 
 #ifdef JAVASCRIPTCORE_ENABLED
 #include "jscutilities.h"
@@ -174,7 +172,7 @@ void Bridge::setupExecutor() {
     resetExecutor();
 #ifdef RCT_DEV
     if (d->remoteJSDebugging) {
-        d->executor = new WebSocketExecutor(QUrl("ws://localhost:8081/debugger-proxy?role=client"), this);
+        //        d->executor = new WebSocketExecutor(QUrl("ws://localhost:8081/debugger-proxy?role=client"), this);
     }
 #endif // RCT_DEV
 
@@ -187,9 +185,7 @@ void Bridge::setupExecutor() {
     }
 #endif // JAVASCRIPTCORE_ENABLED
 
-#ifdef QTWEBENGINE_ENABLED
     d->executor = new WebEngineQtExecutor(this);
-#endif
 
     if (!d->executor) {
         if (!d->executorThread) {
@@ -545,16 +541,6 @@ void Bridge::initModules() {
     addModuleData(d->uiManager);
 }
 
-void Bridge::registerJSObject(const QString &id, QObject *object)
-{
-    d_func()->executor->registerJSObject(id, object);
-    /*QMetaObject::invokeMethod(d_func()->executor,
-                              "registerJSObject",
-                              Qt::AutoConnection,
-                              Q_ARG(const QString&, id),
-                              Q_ARG(QObject*, object));*/
-}
-
 void Bridge::addModuleData(QObject* module) {
     ModuleInterface* moduleInterface = qobject_cast<ModuleInterface*>(module);
     if (!moduleInterface) {
@@ -593,10 +579,7 @@ void Bridge::loadExternalModules(QObjectList* modules) {
     }
 
     d_func()->executor->initJSconstraints();
-    foreach(ModuleInterface* module, externalModuleList) {
-        module->setBridge(this);
-    }
-
+    foreach (ModuleInterface* module, externalModuleList) { module->setBridge(this); }
 }
 
 void Bridge::injectModules() {

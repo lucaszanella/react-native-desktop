@@ -20,10 +20,8 @@ find_package(Qt5Quick REQUIRED)
 find_package(Qt5WebSockets REQUIRED)
 find_package(Qt5Svg REQUIRED)
 
-if (QTWEBENGINE_ENABLED)
   find_package(Qt5WebEngine REQUIRED)
   find_package(Qt5WebEngineWidgets REQUIRED)
-endif()
 
 if (USE_QTWEBKIT)
   find_package(Qt5WebKit REQUIRED)
@@ -106,11 +104,9 @@ if(JAVASCRIPTCORE_ENABLED)
     communication/javascriptcoreexecutor.cpp)
 endif()
 
-if (QTWEBENGINE_ENABLED)
   ADD_DEFINITIONS(-DQTWEBENGINE_ENABLED)
   set(SRC_QTWEBENGINE
       communication/webengineqtexecutor.cpp)
-endif()
 
 
 set(

@@ -19,7 +19,7 @@ option(JAVASCRIPTCORE_ENABLED
 
 option(QTWEBENGINE_ENABLED
     "Build with QtWebEngine enabled"
-    OFF)
+    ON)
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)

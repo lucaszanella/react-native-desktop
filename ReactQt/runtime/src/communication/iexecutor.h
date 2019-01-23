@@ -36,7 +36,6 @@ public:
                                const QVariantList& args = QVariantList(),
                                const ExecuteCallback& callback = ExecuteCallback()) = 0;
 
-    virtual void registerJSObject(const QString &, QObject *) {}
     virtual void initJSconstraints() {}
 
 Q_SIGNALS:

@@ -56,8 +56,7 @@ Executor::Executor(ServerConnection* conn, QObject* parent) : IExecutor(parent),
     qRegisterMetaType<IExecutor::ExecuteCallback>();
 }
 
-void Executor::initJSconstraints() {
-}
+void Executor::initJSconstraints() {}
 
 Executor::~Executor() {
     resetConnection();
@@ -108,9 +107,6 @@ void Executor::executeJSCall(const QString& method,
 
     d_ptr->processRequest(
         QByteArray("__fbBatchedBridge.") + method.toLocal8Bit() + "(" + stringifiedArgs.join(',') + ");", callback);
-}
-
-void Executor::registerJSObject(const QString &id, QObject *object) {
 }
 
 ServerConnection* ExecutorPrivate::connection() {

@@ -28,7 +28,6 @@ class Executor : public IExecutor {
     Q_DECLARE_PRIVATE(Executor)
 
 public:
-
     Executor(ServerConnection* conn, QObject* parent = nullptr);
     ~Executor();
 
@@ -40,8 +39,6 @@ public:
     Q_INVOKABLE virtual void executeJSCall(const QString& method,
                                            const QVariantList& args = QVariantList(),
                                            const IExecutor::ExecuteCallback& callback = ExecuteCallback());
-
-    Q_INVOKABLE void registerJSObject(const QString &id, QObject *object) override;
 
     Q_INVOKABLE void initJSconstraints() override;
 
