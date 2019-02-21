@@ -16,11 +16,7 @@ if ("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
   ADD_DEFINITIONS(-DRCT_DEV)
 endif()
 
-find_package(Qt5Core REQUIRED)
-find_package(Qt5Qml REQUIRED)
-find_package(Qt5Quick REQUIRED)
-find_package(Qt5WebSockets REQUIRED)
-find_package(Qt5Svg REQUIRED)
+find_package(Qt5 COMPONENTS Core Qml Quick Websockets Svg)
 
 if (USE_QTWEBKIT)
   find_package(Qt5WebKit REQUIRED)
